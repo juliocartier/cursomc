@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Produto implements Serializable {
 	
@@ -24,9 +26,10 @@ public class Produto implements Serializable {
 	private double preco;
 	
 	/*
-	 * 
+	 * Essa parte do ManyToMay cria uma associação com a tabela Categoria
+	 * para realizar o relacionamento, criando assim uma terceira tabela
 	 * */
-	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "Produto_Categoria", 
 		joinColumns = @JoinColumn(name = "produto_id"), 
